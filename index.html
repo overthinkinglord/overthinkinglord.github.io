@@ -4,150 +4,224 @@
   <meta charset="UTF-8">
   <meta name="google-site-verification" content="-9Fos69d0rBaKPJVEDCF2Gtl52-xeKKoHckJVcbCE_8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Артист 2025</title>
+<title>OverthinkingLord – Dubstep, Electro-Rock & Horror-Rock Tracks 2026</title>
+<meta name="description" content="OverthinkingLord creates unique tracks in Dubstep, Electro-Rock, and Horror-Rock. Listen on Spotify, Apple Music, SoundCloud, YouTube.">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 <style>
-    /* --- Reset & Base --- */
-    * {margin:0; padding:0; box-sizing:border-box;}
-    html {scroll-behavior: smooth;}
-    body {
-        font-family: 'Montserrat', sans-serif;
-        color: #fff;
-        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-        overflow-x: hidden;
-    }
-    a {color: inherit; text-decoration: none;}
-    section {min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem;}
-    h1 {font-size: 4rem; font-weight: 700; letter-spacing: 2px; margin-bottom: 1rem;}
-    h2 {font-size: 2rem; margin-bottom: 1rem; font-weight: 400;}
-    p {max-width: 600px; line-height: 1.6; margin-bottom: 2rem; color: #ddd;}
+/* --- Reset & Base --- */
+* {margin:0; padding:0; box-sizing:border-box;}
+html {scroll-behavior: smooth;}
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #f0f0f0;
+    background: linear-gradient(135deg, #0b0b0b, #1c1c1c, #2e2e2e);
+    overflow-x: hidden;
+}
+a {color: inherit; text-decoration: none;}
+section {min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem;}
+h1 {font-size: clamp(3rem, 10vw, 5rem); font-weight: 700; margin-bottom: 0.5rem; color: #fff;}
+h2 {font-size: 2rem; margin-bottom: 1rem; font-weight: 500;}
+h3 {font-size: 1.5rem; margin-bottom: 0.5rem;}
+p {max-width: 700px; line-height: 1.6; margin-bottom: 1.5rem; color: #ccc;}
 
-    /* --- Buttons --- */
-    .btn {
-        display: inline-block;
-        padding: 0.8rem 2rem;
-        border: 2px solid #fff;
-        border-radius: 50px;
-        font-weight: 700;
-        transition: 0.3s;
-        cursor: pointer;
-    }
-    .btn:hover {
-        background: #fff;
-        color: #203a43;
-    }
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: 2px solid #7f1d1d; /* dark red border */
+    border-radius: 50px;
+    font-weight: 700;
+    transition: 0.3s;
+    cursor: pointer;
+    color: #7f1d1d;
+}
+.btn:hover {
+    background: #7f1d1d;
+    color: #fff;
+}
 
-    /* --- Hero Section --- */
-    #hero {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
-    #hero h1 {
-        font-size: clamp(3rem, 10vw, 6rem);
-    }
-    #hero .btn {
-        margin-top: 2rem;
-    }
+/* --- Hero Section --- */
+#hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#hero p {font-size: 1.3rem; margin-bottom: 2rem; color: #bbb;}
 
-    /* --- About Section --- */
-    #about {
-        background: rgba(255,255,255,0.05);
-        backdrop-filter: blur(5px);
-        border-radius: 15px;
-        padding: 4rem 2rem;
-        margin: 2rem;
-        transition: transform 0.8s ease, opacity 0.8s ease;
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    #about.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* --- About Section --- */
+#about {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    padding: 4rem 2rem;
+    margin: 2rem;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+#about.visible {opacity:1; transform: translateY(0);}
 
-    /* --- Gallery Section --- */
-    #gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1rem;
-        width: 90%;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    #gallery img {
-        width: 100%;
-        border-radius: 15px;
-        transition: transform 0.5s ease, filter 0.5s ease;
-        cursor: pointer;
-    }
-    #gallery img:hover {
-        transform: scale(1.05);
-        filter: brightness(1.2);
-    }
+/* --- Discography Section --- */
+#discography {width: 90%; max-width: 1200px; margin: 0 auto;}
+.track-filter {margin-bottom: 2rem;}
+.track-filter button {
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    border: 1px solid #7f1d1d;
+    background: transparent;
+    color: #7f1d1d;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.track-filter button.active, .track-filter button:hover {
+    background: #7f1d1d;
+    color: #fff;
+}
+.track-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    gap: 1rem;
+}
+.track-card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding: 1rem;
+    transition: transform 0.3s;
+}
+.track-card:hover {transform: scale(1.05);}
+.track-card img {width:100%; border-radius:10px; margin-bottom:0.5rem;}
 
-    /* --- Footer Section --- */
-    footer {
-        padding: 2rem;
-        font-size: 0.9rem;
-        color: #aaa;
-    }
+/* --- Social & Subscription --- */
+#social {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.social-links a {margin: 0 0.5rem; font-weight: 700; color:#7f1d1d;}
+#subscribe input[type="email"] {
+    padding:0.8rem;
+    border-radius:50px;
+    border:none;
+    margin-right:0.5rem;
+    width:250px;
+}
+#subscribe button {border-radius:50px; padding:0.8rem 1.5rem; border:none; background:#7f1d1d; color:#fff; font-weight:700; cursor:pointer; transition:0.3s;}
+#subscribe button:hover {background:#fff; color:#7f1d1d;}
 
-    /* --- Scroll animation helper --- */
-    .fade-in {opacity:0; transform: translateY(50px); transition: all 0.8s ease;}
-    .fade-in.show {opacity:1; transform: translateY(0);}
+/* --- Footer --- */
+footer {padding:2rem; font-size:0.9rem; color:#aaa;}
+
+/* --- Fade-in animation helper --- */
+.fade-in {opacity:0; transform: translateY(50px); transition: all 0.8s ease;}
+.fade-in.show {opacity:1; transform: translateY(0);}
 </style>
 </head>
 <body>
 
 <!-- Hero Section -->
 <section id="hero">
-    <h1>Имя Артиста</h1>
-    <p>Электронная / Хип-хоп / Современная музыка</p>
-    <a href="#about" class="btn">Узнать больше</a>
+    <h1>OverthinkingLord</h1>
+    <p>Dubstep, Experimental Rock, Electro-Rock, Atmospheric & Horror-Rock</p>
+    <div>
+        <a href="#discography" class="btn">Listen Now</a>
+        <a href="#discography" class="btn">Add to Playlist</a>
+        <a href="#discography" class="btn">Buy / Download Track</a>
+    </div>
 </section>
 
 <!-- About Section -->
 <section id="about" class="fade-in">
-    <h2>О музыке</h2>
-    <p>Артист создает уникальные треки, смешивая современные ритмы с атмосферными звуками, чтобы каждый концерт превращался в незабываемое шоу.</p>
-    <a href="#gallery" class="btn">Галерея</a>
+    <h2>Biography / Music</h2>
+    <p>OverthinkingLord is an emerging artist creating unique tracks in Dubstep, Experimental Rock, Electro-Rock, Atmospheric and Horror-Rock genres. His music blends aggression with depth, creating emotionally rich and visually immersive worlds.</p>
+    <p>All releases are available on Spotify, Apple Music, SoundCloud, YouTube, and Genius. Since 2025, he has actively shared visual content on Pinterest, Telegram, and Instagram, merging music with an emo-horror aesthetic.</p>
 </section>
 
-<!-- Gallery Section -->
-<section id="gallery" class="fade-in">
-    <img src="https://picsum.photos/400/400?1" alt="Gallery 1">
-    <img src="https://picsum.photos/400/400?2" alt="Gallery 2">
-    <img src="https://picsum.photos/400/400?3" alt="Gallery 3">
-    <img src="https://picsum.photos/400/400?4" alt="Gallery 4">
+<!-- Discography Section -->
+<section id="discography" class="fade-in">
+    <h2>Releases</h2>
+    <div class="track-filter">
+        <button class="active" data-genre="all">All</button>
+        <button data-genre="dubstep">Dubstep</button>
+        <button data-genre="rock">Experimental Rock</button>
+        <button data-genre="electro">Electro-Rock</button>
+        <button data-genre="horror">Atmospheric / Horror-Rock</button>
+    </div>
+    <div class="track-grid">
+        <div class="track-card" data-genre="dubstep">
+            <img src="https://picsum.photos/300/300?1" alt="OverthinkingLord Track Cover">
+            <h3>Track 1</h3>
+            <p>High-energy dubstep with horror atmosphere.</p>
+            <a href="#" target="_blank">Spotify</a> | <a href="#" target="_blank">Apple Music</a>
+        </div>
+        <div class="track-card" data-genre="rock">
+            <img src="https://picsum.photos/300/300?2" alt="OverthinkingLord Experimental Electro-Rock">
+            <h3>Track 2</h3>
+            <p>Experimental rock with dark melodies.</p>
+            <a href="#" target="_blank">Spotify</a> | <a href="#" target="_blank">SoundCloud</a>
+        </div>
+        <div class="track-card" data-genre="horror">
+            <img src="https://picsum.photos/300/300?3" alt="OverthinkingLord Atmospheric Horror-Rock">
+            <h3>Track 3</h3>
+            <p>Atmospheric horror-rock, perfect for dark nights.</p>
+            <a href="#" target="_blank">YouTube</a> | <a href="#" target="_blank">Genius</a>
+        </div>
+        <div class="track-card" data-genre="electro">
+            <img src="https://picsum.photos/300/300?4" alt="OverthinkingLord Electro-Rock">
+            <h3>Track 4</h3>
+            <p>Electro-rock with aggressive energy.</p>
+            <a href="#" target="_blank">Spotify</a> | <a href="#" target="_blank">Apple Music</a>
+        </div>
+    </div>
+</section>
+
+<!-- Social & Subscription -->
+<section id="social" class="fade-in">
+    <h2>Social Media</h2>
+    <div class="social-links">
+        <a href="#" target="_blank">Instagram</a> | 
+        <a href="#" target="_blank">Pinterest</a> | 
+        <a href="#" target="_blank">Telegram</a>
+    </div>
+    <div id="subscribe" style="margin-top:2rem;">
+        <input type="email" placeholder="Your email">
+        <button>Don't miss new tracks</button>
+    </div>
 </section>
 
 <!-- Footer -->
 <footer class="fade-in">
-    <p>Социальные сети: 
-        <a href="#">Instagram</a> | 
-        <a href="#">YouTube</a> | 
-        <a href="#">Spotify</a>
-    </p>
-    <p>&copy; 2026 Артист. Все права защищены.</p>
+    <p>&copy; 2026 OverthinkingLord. All rights reserved.</p>
 </footer>
 
 <script>
-    // Scroll reveal
-    const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = {threshold: 0.2, rootMargin: "0px 0px -50px 0px"};
+// Scroll reveal
+const faders = document.querySelectorAll('.fade-in');
+const appearOptions = {threshold: 0.2, rootMargin: "0px 0px -50px 0px"};
+const appearOnScroll = new IntersectionObserver((entries, observer)=>{
+    entries.forEach(entry=>{
+        if(!entry.isIntersecting) return;
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+    });
+}, appearOptions);
+faders.forEach(fader=>appearOnScroll.observe(fader));
 
-    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-            entry.target.classList.add('show');
-            observer.unobserve(entry.target);
+// Discography filter
+const filterButtons = document.querySelectorAll('.track-filter button');
+const tracks = document.querySelectorAll('.track-card');
+filterButtons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+        filterButtons.forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const genre = btn.dataset.genre;
+        tracks.forEach(track=>{
+            track.style.display = (genre==='all' || track.dataset.genre===genre)?'block':'none';
         });
-    }, appearOptions);
-
-    faders.forEach(fader => appearOnScroll.observe(fader));
+    });
+});
 </script>
 
 </body>

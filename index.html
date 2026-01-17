@@ -33,16 +33,21 @@ body{
     overflow:hidden;
 }
 
-/* AVATAR */
-#avatar{
+/* AVATAR WRAPPER */
+#avatar-wrapper{
     width:300px;
     height:300px;
-    object-fit:cover;
-    border-radius:12px;
     margin-bottom:20px;
     opacity:0;
-    transform:translateY(-20px);
-    animation:fadeUp .8s forwards .2s;
+    animation:fadeUp 0.8s forwards 0.2s;
+}
+
+/* AVATAR */
+#avatar{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:12px;
     transition: transform 0.1s ease-out;
 }
 
@@ -52,7 +57,6 @@ body{
     text-transform:lowercase;
     margin-bottom:.5rem;
     opacity:0;
-    transform:translateY(20px);
     animation:fadeUp 1s forwards .5s;
 }
 
@@ -60,7 +64,6 @@ body{
     font-size:1.2rem;
     margin-bottom:1.5rem;
     opacity:0;
-    transform:translateY(20px);
     animation:fadeUp 1s forwards .7s;
 }
 
@@ -77,7 +80,6 @@ body{
     height:45px;
     filter:brightness(0) invert(1);
     opacity:0;
-    transform:translateY(10px);
     animation:fadeUp .7s forwards;
     transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
 }
@@ -122,7 +124,7 @@ body{
 
 /* ANIMATIONS */
 @keyframes fadeUp{
-    to{opacity:1;transform:translateY(0);}
+    to{opacity:1;}
 }
 
 @keyframes float{
@@ -137,7 +139,10 @@ body{
 
 <section id="hero">
 
-    <img id="avatar" src="avatar.jpeg" alt="OverthinkingLord Avatar">
+    <!-- AVATAR WRAPPER -->
+    <div id="avatar-wrapper">
+        <img id="avatar" src="avatar.jpeg" alt="OverthinkingLord Avatar">
+    </div>
 
     <h1>overthinkinglord</h1>
     <p>Dubstep · Experimental Rock · Electro-Rock · Atmospheric & Horror-Rock</p>
@@ -173,16 +178,16 @@ for(let i=0;i<50;i++){
 
 // PARALLAX AVATAR
 const avatar = document.getElementById('avatar');
-const hero = document.getElementById('hero');
+const wrapper = document.getElementById('avatar-wrapper');
 
-hero.addEventListener('mousemove', e => {
-    const x = (e.clientX / window.innerWidth - 0.5) * 20; // горизонтальное смещение
-    const y = (e.clientY / window.innerHeight - 0.5) * 20; // вертикальное смещение
-    avatar.style.transform = `translateY(-20px) translateX(${x}px) translateY(${y}px)`; 
+wrapper.addEventListener('mousemove', e => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 20;
+    const y = (e.clientY / window.innerHeight - 0.5) * 20;
+    avatar.style.transform = `translate(${x}px, ${y}px)`; 
 });
 
-hero.addEventListener('mouseleave', () => {
-    avatar.style.transform = `translateY(-20px) translateX(0) translateY(0)`; 
+wrapper.addEventListener('mouseleave', () => {
+    avatar.style.transform = `translate(0px, 0px)`; 
 });
 </script>
 

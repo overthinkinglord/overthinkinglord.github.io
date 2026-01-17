@@ -7,6 +7,7 @@
 <title>overthinkinglord – Dubstep, Electro-Rock & Horror-Rock 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 <style>
+/* --- Reset & Body --- */
 *{margin:0; padding:0; box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow-x:hidden;}
@@ -22,44 +23,27 @@ body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow-
     align-items:center;
     text-align:center;
     position:relative;
-    padding:100px 20px 20px 20px; /* чуть больше сверху */
+    padding:100px 20px 20px 20px;
     overflow:hidden;
 }
 
-/* --- Avatar --- */
+/* --- Hero Header --- */
+#hero-header{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
 #avatar{
-    width:120px;
-    height:120px;
-    object-fit:cover;
+    height:1em;
+    max-height:5rem;
     border-radius:12px;
-    margin-bottom:20px;
     opacity:0;
     transform:translateY(-20px);
     animation: fadeUp 0.8s forwards 0.2s;
 }
-
-/* --- Particles --- */
-.particle{
-    position:absolute;
-    border-radius:50%;
-    background: rgba(183,28,28,0.25);
-    pointer-events:none;
-    animation-name: float;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-}
-@keyframes float{
-    0%{transform:translateY(0);}
-    50%{transform:translateY(-100px);}
-    100%{transform:translateY(0);}
-}
-
-/* --- Header text --- */
 #hero h1{
     font-size:clamp(2.5rem,8vw,4rem);
     font-weight:700;
-    margin-bottom:1rem;
-    text-transform:lowercase;
     opacity:0;
     transform:translateY(20px);
     animation: fadeUp 1s forwards 0.5s;
@@ -72,7 +56,7 @@ body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow-
     animation: fadeUp 1s forwards 0.7s;
 }
 
-/* --- Buttons with soft red blur behind --- */
+/* --- Buttons --- */
 .btn-container{
     display:flex;
     flex-wrap:wrap;
@@ -143,19 +127,52 @@ body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow-
     text-align:center;
 }
 
+/* --- Particles --- */
+.particle{
+    position:absolute;
+    border-radius:50%;
+    background: rgba(183,28,28,0.25);
+    pointer-events:none;
+    animation-name: float;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-100px);}
+    100%{transform:translateY(0);}
+}
+
 /* --- Animations --- */
 @keyframes fadeUp{
     to{opacity:1; transform:translateY(0);}
+}
+
+/* --- Responsive --- */
+@media(max-width:600px){
+    #hero-header{
+        flex-direction:column;
+        gap:10px;
+    }
+    #avatar{
+        height:3rem;
+    }
+    #hero h1{
+        font-size:2.5rem;
+    }
 }
 </style>
 </head>
 <body>
 
 <section id="hero">
-    <!-- Avatar -->
-    <img id="avatar" src="avatar.jpeg" alt="OverthinkingLord Avatar">
+    <div id="hero-header">
+        <!-- Avatar -->
+        <img id="avatar" src="avatar.jpeg" alt="OverthinkingLord Avatar">
+        <!-- Header Text -->
+        <h1>overthinkinglord</h1>
+    </div>
 
-    <h1>overthinkinglord</h1>
     <p>Dubstep · Experimental Rock · Electro-Rock · Atmospheric & Horror-Rock</p>
     
     <div class="btn-container">
@@ -179,7 +196,7 @@ body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow-
 </section>
 
 <script>
-// Generate 50 particles with different sizes and speeds
+// --- Particles ---
 for(let i=0;i<50;i++){
     const particle=document.createElement('div');
     particle.classList.add('particle');
@@ -191,6 +208,18 @@ for(let i=0;i<50;i++){
     particle.style.animationDuration=`${Math.random()*15+10}s`;
     document.getElementById('hero').appendChild(particle);
 }
+
+// --- Mouse parallax ---
+const hero = document.getElementById('hero');
+const avatar = document.getElementById('avatar');
+const headerText = hero.querySelector('h1');
+
+hero.addEventListener('mousemove', (e)=>{
+    const x = (e.clientX - window.innerWidth/2) / 50;
+    const y = (e.clientY - window.innerHeight/2) / 50;
+    avatar.style.transform = `translate(${x}px, ${y}px)`;
+    headerText.style.transform = `translate(${x/2}px, ${y/2}px)`;
+});
 </script>
 
 </body>

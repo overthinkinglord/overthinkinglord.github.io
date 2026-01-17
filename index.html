@@ -4,112 +4,151 @@
   <meta charset="UTF-8">
   <meta name="google-site-verification" content="-9Fos69d0rBaKPJVEDCF2Gtl52-xeKKoHckJVcbCE_8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>overthinkinglord</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<title>Артист 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    font-family: 'Inter', sans-serif;
-    background: #0f0f0f;
-    color: #fff;
-    scroll-behavior: smooth;
-  }
-  header {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 20px;
-    background: linear-gradient(135deg, #1f1f1f 0%, #111 100%);
-  }
-  header h1 {
-    font-size: 4rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    letter-spacing: 2px;
-  }
-  header p {
-    font-size: 1.2rem;
-    color: #aaa;
-    max-width: 600px;
-  }
-  section {
-    padding: 80px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-  }
-  iframe {
-    border-radius: 12px;
-    border: none;
-    width: 300px;
-    height: 80px;
-  }
-  .players {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-  }
-  .socials {
-    display: flex;
-    gap: 30px;
-    font-size: 1.5rem;
-  }
-  .socials a {
-    color: #fff;
-    transition: 0.3s;
-  }
-  .socials a:hover {
-    color: #ff4c4c;
-  }
-  footer {
-    padding: 40px 20px;
-    text-align: center;
-    color: #555;
-    font-size: 0.9rem;
-  }
-  @media(min-width: 768px) {
-    iframe { width: 500px; height: 80px; }
-    .players { flex-direction: row; }
-  }
+    /* --- Reset & Base --- */
+    * {margin:0; padding:0; box-sizing:border-box;}
+    html {scroll-behavior: smooth;}
+    body {
+        font-family: 'Montserrat', sans-serif;
+        color: #fff;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        overflow-x: hidden;
+    }
+    a {color: inherit; text-decoration: none;}
+    section {min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem;}
+    h1 {font-size: 4rem; font-weight: 700; letter-spacing: 2px; margin-bottom: 1rem;}
+    h2 {font-size: 2rem; margin-bottom: 1rem; font-weight: 400;}
+    p {max-width: 600px; line-height: 1.6; margin-bottom: 2rem; color: #ddd;}
+
+    /* --- Buttons --- */
+    .btn {
+        display: inline-block;
+        padding: 0.8rem 2rem;
+        border: 2px solid #fff;
+        border-radius: 50px;
+        font-weight: 700;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+    .btn:hover {
+        background: #fff;
+        color: #203a43;
+    }
+
+    /* --- Hero Section --- */
+    #hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    #hero h1 {
+        font-size: clamp(3rem, 10vw, 6rem);
+    }
+    #hero .btn {
+        margin-top: 2rem;
+    }
+
+    /* --- About Section --- */
+    #about {
+        background: rgba(255,255,255,0.05);
+        backdrop-filter: blur(5px);
+        border-radius: 15px;
+        padding: 4rem 2rem;
+        margin: 2rem;
+        transition: transform 0.8s ease, opacity 0.8s ease;
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    #about.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* --- Gallery Section --- */
+    #gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    #gallery img {
+        width: 100%;
+        border-radius: 15px;
+        transition: transform 0.5s ease, filter 0.5s ease;
+        cursor: pointer;
+    }
+    #gallery img:hover {
+        transform: scale(1.05);
+        filter: brightness(1.2);
+    }
+
+    /* --- Footer Section --- */
+    footer {
+        padding: 2rem;
+        font-size: 0.9rem;
+        color: #aaa;
+    }
+
+    /* --- Scroll animation helper --- */
+    .fade-in {opacity:0; transform: translateY(50px); transition: all 0.8s ease;}
+    .fade-in.show {opacity:1; transform: translateY(0);}
 </style>
 </head>
 <body>
 
-<header>
-  <h1>overthinkinglord</h1>
-  <p>Instrumental beats for your mind. Minimalistic, emotional, and fresh sounds for 2025 vibes.</p>
-</header>
-
-<section>
-  <h2>Listen</h2>
-  <div class="players">
-    <!-- Spotify Embed -->
-    <iframe src="https://open.spotify.com/embed/artist/1u0V3g7AqFzW0PnQ8kpS0B?utm_source=generator" allow="encrypted-media" loading="lazy"></iframe>
-    <!-- SoundCloud Embed -->
-    <iframe width="500" height="166" scrolling="no" frameborder="no" allow="autoplay"
-      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/123456789&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
-    </iframe>
-  </div>
+<!-- Hero Section -->
+<section id="hero">
+    <h1>Имя Артиста</h1>
+    <p>Электронная / Хип-хоп / Современная музыка</p>
+    <a href="#about" class="btn">Узнать больше</a>
 </section>
 
-<section>
-  <h2>Follow</h2>
-  <div class="socials">
-    <a href="https://instagram.com/overthinkinglord" target="_blank">Instagram</a>
-    <a href="https://youtube.com/@overthinkinglord" target="_blank">YouTube</a>
-    <a href="https://tiktok.com/@overthinkinglord" target="_blank">TikTok</a>
-    <a href="https://t.me/overthinkinglord" target="_blank">Telegram</a>
-  </div>
+<!-- About Section -->
+<section id="about" class="fade-in">
+    <h2>О музыке</h2>
+    <p>Артист создает уникальные треки, смешивая современные ритмы с атмосферными звуками, чтобы каждый концерт превращался в незабываемое шоу.</p>
+    <a href="#gallery" class="btn">Галерея</a>
 </section>
 
-<footer>
-  &copy; 2026 overthinkinglord. All rights reserved.
+<!-- Gallery Section -->
+<section id="gallery" class="fade-in">
+    <img src="https://picsum.photos/400/400?1" alt="Gallery 1">
+    <img src="https://picsum.photos/400/400?2" alt="Gallery 2">
+    <img src="https://picsum.photos/400/400?3" alt="Gallery 3">
+    <img src="https://picsum.photos/400/400?4" alt="Gallery 4">
+</section>
+
+<!-- Footer -->
+<footer class="fade-in">
+    <p>Социальные сети: 
+        <a href="#">Instagram</a> | 
+        <a href="#">YouTube</a> | 
+        <a href="#">Spotify</a>
+    </p>
+    <p>&copy; 2026 Артист. Все права защищены.</p>
 </footer>
+
+<script>
+    // Scroll reveal
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = {threshold: 0.2, rootMargin: "0px 0px -50px 0px"};
+
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('show');
+            observer.unobserve(entry.target);
+        });
+    }, appearOptions);
+
+    faders.forEach(fader => appearOnScroll.observe(fader));
+</script>
 
 </body>
 </html>

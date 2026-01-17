@@ -40,6 +40,7 @@ body{
     margin-bottom:20px;
     opacity:0;
     animation:fadeUp 0.8s forwards 0.2s;
+    perspective: 1000px; /* добавляем глубину для 3D */
 }
 
 /* AVATAR */
@@ -48,7 +49,8 @@ body{
     height:100%;
     object-fit:cover;
     border-radius:12px;
-    transition: transform 0.1s ease-out;
+    transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
+    will-change: transform, box-shadow;
 }
 
 /* TEXT */
@@ -176,18 +178,27 @@ for(let i=0;i<50;i++){
     document.getElementById('hero').appendChild(p);
 }
 
-// PARALLAX AVATAR
+// 3D PARALLAX AVATAR
 const avatar = document.getElementById('avatar');
 const wrapper = document.getElementById('avatar-wrapper');
 
 wrapper.addEventListener('mousemove', e => {
-    const x = (e.clientX / window.innerWidth - 0.5) * 20;
-    const y = (e.clientY / window.innerHeight - 0.5) * 20;
-    avatar.style.transform = `translate(${x}px, ${y}px)`; 
+    const rect = wrapper.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width/2;
+    const y = e.clientY - rect.top - rect.height/2;
+
+    const rotateX = (y / rect.height) * 15; // вращение по X
+    const rotateY = -(x / rect.width) * 15; // вращение по Y
+    const translateX = x * 0.05; // смещение по X
+    const translateY = y * 0.05; // смещение по Y
+
+    avatar.style.transform = `translate(${translateX}px, ${translateY}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    avatar.style.boxShadow = `${-rotateY*0.8}px ${rotateX*0.8}px 20px rgba(0,0,0,0.4)`;
 });
 
 wrapper.addEventListener('mouseleave', () => {
-    avatar.style.transform = `translate(0px, 0px)`; 
+    avatar.style.transform = `translate(0px,0px) rotateX(0deg) rotateY(0deg)`;
+    avatar.style.boxShadow = `0 0 0 rgba(0,0,0,0)`;
 });
 </script>
 

@@ -138,3 +138,94 @@ body{
     50%{transform:translateY(-100px);}
     100%{transform:translateY(0);}
 }
+
+/* 3D AVATAR ANIMATION */
+@keyframes avatar3D{
+    0%{transform: rotateX(1deg) rotateY(-2deg) translateY(0); box-shadow:0 10px 30px rgba(0,0,0,0.4);}
+    25%{transform: rotateX(-1deg) rotateY(2deg) translateY(-3px); box-shadow:0 12px 30px rgba(0,0,0,0.45);}
+    50%{transform: rotateX(2deg) rotateY(1deg) translateY(2px); box-shadow:0 11px 28px rgba(0,0,0,0.42);}
+    75%{transform: rotateX(-2deg) rotateY(-1deg) translateY(-2px); box-shadow:0 12px 30px rgba(0,0,0,0.43);}
+    100%{transform: rotateX(1deg) rotateY(-2deg) translateY(0); box-shadow:0 10px 30px rgba(0,0,0,0.4);}
+}
+
+/* MEDIA QUERIES */
+@media(max-width:600px){
+    #avatar-wrapper{
+        width:50vw;
+        height:50vw;
+    }
+    #hero h1{
+        font-size:clamp(1.5rem,10vw,2.5rem);
+    }
+    #hero p{
+        font-size:clamp(.9rem,4vw,1rem);
+    }
+    #social-hero img{
+        width:35px;
+        height:35px;
+    }
+    #social-hero{
+        gap:12px;
+    }
+}
+</style>
+</head>
+
+<body>
+<section id="hero">
+
+    <div id="avatar-wrapper">
+        <img id="avatar" src="avatar.jpeg" alt="OverthinkingLord Avatar">
+    </div>
+
+    <h1>overthinkinglord</h1>
+    <p>Dubstep · Experimental Rock · Electro-Rock · Atmospheric & Horror-Rock</p>
+
+    <div id="social-hero">
+        <a href="https://open.spotify.com/artist/6OjZJ949rB6WX7TWiClO6d?utm_medium=share&utm_source=linktree" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/spotify.svg" alt="Spotify">
+        </a>
+        <a href="https://music.apple.com/us/artist/overthinkinglord/1851518484" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/applemusic.svg" alt="Apple Music">
+        </a>
+        <a href="https://soundcloud.com/overthinkinglord" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/soundcloud.svg" alt="SoundCloud">
+        </a>
+        <a href="https://www.youtube.com/@overthinkinglord" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube">
+        </a>
+        <a href="https://www.instagram.com/overthinkingprod" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram">
+        </a>
+        <a href="https://www.beatstars.com/overthinkinglord" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/beatstars.svg" alt="Beatstars">
+        </a>
+        <a href="https://www.tiktok.com/@overthinkinglord7" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok">
+        </a>
+        <a href="https://genius.com/artists/Overthinkinglord" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/genius.svg" alt="Genius">
+        </a>
+    </div>
+
+    <div id="hero-footer">© 2026 OverthinkingLord. All rights reserved.</div>
+
+</section>
+
+<script>
+// PARTICLES
+for(let i=0;i<50;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    const s=Math.random()*6+4;
+    p.style.width=s+'px';
+    p.style.height=s+'px';
+    p.style.left=Math.random()*100+'%';
+    p.style.top=Math.random()*100+'%';
+    p.style.animationDuration=(Math.random()*15+10)+'s';
+    document.getElementById('hero').appendChild(p);
+}
+</script>
+
+</body>
+</html>

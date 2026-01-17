@@ -14,45 +14,61 @@ html {scroll-behavior: smooth;}
 body {
     font-family: 'Montserrat', sans-serif;
     color: #f0f0f0;
-    background: linear-gradient(135deg, #0b0b0b, #1c1c1c, #2e2e2e);
     overflow-x: hidden;
+    background: #0b0b0b;
 }
-a {color: inherit; text-decoration: none;}
+
+/* --- Background Photo + gradient overlay --- */
+#hero {
+    height: 100vh;
+    width: 100%;
+    background: 
+      linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.85)),
+      url('YOUR_IMAGE_URL_HERE') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+#hero h1, #hero p, #hero .btn {opacity:0; transform: translateY(30px); animation: fadeUp 1s forwards; }
+#hero h1 {animation-delay: 0.3s;}
+#hero p {animation-delay: 0.6s;}
+#hero .btn:nth-child(1) {animation-delay: 0.9s;}
+#hero .btn:nth-child(2) {animation-delay: 1.1s;}
+#hero .btn:nth-child(3) {animation-delay: 1.3s;}
+@keyframes fadeUp {to {opacity:1; transform: translateY(0);}}
+
+/* --- Section base --- */
 section {min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem;}
-h1 {font-size: clamp(3rem, 10vw, 5rem); font-weight: 700; margin-bottom: 0.5rem; color: #fff;}
-h2 {font-size: 2rem; margin-bottom: 1rem; font-weight: 500;}
-h3 {font-size: 1.5rem; margin-bottom: 0.5rem;}
-p {max-width: 700px; line-height: 1.6; margin-bottom: 1.5rem; color: #ccc;}
+h1 {font-size: clamp(3rem, 10vw, 5rem); font-weight: 700; margin-bottom: 0.5rem; color:#fff;}
+h2 {font-size:2rem; margin-bottom:1rem; font-weight:500;}
+h3 {font-size:1.5rem; margin-bottom:0.5rem;}
+p {max-width:700px; line-height:1.6; margin-bottom:1.5rem; color:#ccc;}
 
 /* --- Buttons --- */
 .btn {
     display: inline-block;
     padding: 0.8rem 2rem;
-    border: 2px solid #7f1d1d; /* dark red border */
+    border: 2px solid #ff0000; /* bright red */
     border-radius: 50px;
     font-weight: 700;
     transition: 0.3s;
     cursor: pointer;
-    color: #7f1d1d;
+    color: #ff0000;
+    margin:0.5rem;
 }
 .btn:hover {
-    background: #7f1d1d;
+    background: #ff0000;
     color: #fff;
+    transform: scale(1.05);
 }
-
-/* --- Hero Section --- */
-#hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-#hero p {font-size: 1.3rem; margin-bottom: 2rem; color: #bbb;}
 
 /* --- About Section --- */
 #about {
-    background: rgba(255,255,255,0.05);
+    background: linear-gradient(145deg, rgba(255,0,0,0.05), rgba(0,0,0,0.5));
     backdrop-filter: blur(5px);
     border-radius: 15px;
     padding: 4rem 2rem;
@@ -63,58 +79,30 @@ p {max-width: 700px; line-height: 1.6; margin-bottom: 1.5rem; color: #ccc;}
 }
 #about.visible {opacity:1; transform: translateY(0);}
 
-/* --- Discography Section --- */
-#discography {width: 90%; max-width: 1200px; margin: 0 auto;}
-.track-filter {margin-bottom: 2rem;}
+/* --- Discography --- */
+#discography {width:90%; max-width:1200px; margin:0 auto;}
+.track-filter {margin-bottom:2rem;}
 .track-filter button {
-    margin: 0 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 50px;
-    border: 1px solid #7f1d1d;
-    background: transparent;
-    color: #7f1d1d;
-    cursor: pointer;
-    transition: 0.3s;
+    margin:0 0.5rem; padding:0.5rem 1rem; border-radius:50px; border:1px solid #ff0000; background:transparent; color:#ff0000; cursor:pointer; transition:0.3s;
 }
-.track-filter button.active, .track-filter button:hover {
-    background: #7f1d1d;
-    color: #fff;
-}
-.track-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-    gap: 1rem;
-}
-.track-card {
-    background: rgba(255,255,255,0.05);
-    border-radius: 10px;
-    padding: 1rem;
-    transition: transform 0.3s;
-}
-.track-card:hover {transform: scale(1.05);}
+.track-filter button.active, .track-filter button:hover {background:#ff0000; color:#fff;}
+.track-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem;}
+.track-card {background: linear-gradient(145deg, rgba(255,0,0,0.05), rgba(0,0,0,0.3)); border-radius:10px; padding:1rem; transition: transform 0.3s, box-shadow 0.3s;}
+.track-card:hover {transform: scale(1.05); box-shadow: 0 0 20px rgba(255,0,0,0.5);}
 .track-card img {width:100%; border-radius:10px; margin-bottom:0.5rem;}
 
-/* --- Social & Subscription --- */
-#social {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.social-links a {margin: 0 0.5rem; font-weight: 700; color:#7f1d1d;}
-#subscribe input[type="email"] {
-    padding:0.8rem;
-    border-radius:50px;
-    border:none;
-    margin-right:0.5rem;
-    width:250px;
-}
-#subscribe button {border-radius:50px; padding:0.8rem 1.5rem; border:none; background:#7f1d1d; color:#fff; font-weight:700; cursor:pointer; transition:0.3s;}
-#subscribe button:hover {background:#fff; color:#7f1d1d;}
+/* --- Social & Subscribe --- */
+#social {display:flex; flex-direction:column; align-items:center;}
+.social-links a {margin:0 0.5rem; font-weight:700; color:#ff0000; transition:0.3s;}
+.social-links a:hover {color:#fff;}
+#subscribe input[type="email"] {padding:0.8rem; border-radius:50px; border:none; margin-right:0.5rem; width:250px;}
+#subscribe button {border-radius:50px; padding:0.8rem 1.5rem; border:none; background:#ff0000; color:#fff; font-weight:700; cursor:pointer; transition:0.3s;}
+#subscribe button:hover {background:#fff; color:#ff0000; transform: scale(1.05);}
 
 /* --- Footer --- */
 footer {padding:2rem; font-size:0.9rem; color:#aaa;}
 
-/* --- Fade-in animation helper --- */
+/* --- Fade-in for sections --- */
 .fade-in {opacity:0; transform: translateY(50px); transition: all 0.8s ease;}
 .fade-in.show {opacity:1; transform: translateY(0);}
 </style>
@@ -154,36 +142,45 @@ footer {padding:2rem; font-size:0.9rem; color:#aaa;}
             <img src="https://picsum.photos/300/300?1" alt="OverthinkingLord Track Cover">
             <h3>Track 1</h3>
             <p>High-energy dubstep with horror atmosphere.</p>
-            <a href="#" target="_blank">Spotify</a> | <a href="#" target="_blank">Apple Music</a>
+            <a href="https://open.spotify.com/artist/6OjZJ949rB6WX7TWiClO6d?utm_medium=share&utm_source=linktree" target="_blank">Spotify</a> | 
+            <a href="https://music.apple.com/us/artist/overthinkinglord/1851518484" target="_blank">Apple Music</a>
         </div>
         <div class="track-card" data-genre="rock">
             <img src="https://picsum.photos/300/300?2" alt="OverthinkingLord Experimental Electro-Rock">
             <h3>Track 2</h3>
             <p>Experimental rock with dark melodies.</p>
-            <a href="#" target="_blank">Spotify</a> | <a href="#" target="_blank">SoundCloud</a>
+            <a href="https://open.spotify.com/artist/6OjZJ949rB6WX7TWiClO6d?utm_medium=share&utm_source=linktree" target="_blank">Spotify</a> | 
+            <a href="https://soundcloud.com/overthinkinglord" target="_blank">SoundCloud</a>
         </div>
         <div class="track-card" data-genre="horror">
             <img src="https://picsum.photos/300/300?3" alt="OverthinkingLord Atmospheric Horror-Rock">
             <h3>Track 3</h3>
             <p>Atmospheric horror-rock, perfect for dark nights.</p>
-            <a href="#" target="_blank">YouTube</a> | <a href="#" target="_blank">Genius</a>
+            <a href="https://www.youtube.com/@overthinkinglord" target="_blank">YouTube</a> | 
+            <a href="https://genius.com/artists/Overthinkinglord" target="_blank">Genius</a>
         </div>
         <div class="track-card" data-genre="electro">
             <img src="https://picsum.photos/300/300?4" alt="OverthinkingLord Electro-Rock">
             <h3>Track 4</h3>
             <p>Electro-rock with aggressive energy.</p>
-            <a href="#" target="_blank">Spotify</a> | <a href="#" target="_blank">Apple Music</a>
+            <a href="https://open.spotify.com/artist/6OjZJ949rB6WX7TWiClO6d?utm_medium=share&utm_source=linktree" target="_blank">Spotify</a> | 
+            <a href="https://music.apple.com/us/artist/overthinkinglord/1851518484" target="_blank">Apple Music</a>
         </div>
     </div>
 </section>
 
 <!-- Social & Subscription -->
 <section id="social" class="fade-in">
-    <h2>Social Media</h2>
+    <h2>Social & Streaming</h2>
     <div class="social-links">
-        <a href="#" target="_blank">Instagram</a> | 
-        <a href="#" target="_blank">Pinterest</a> | 
-        <a href="#" target="_blank">Telegram</a>
+        <a href="https://www.instagram.com/overthinkingprod" target="_blank">Instagram</a> | 
+        <a href="https://www.beatstars.com/overthinkinglord" target="_blank">Beatstars</a> | 
+        <a href="https://www.tiktok.com/@overthinkinglord7" target="_blank">TikTok</a> | 
+        <a href="https://www.youtube.com/@overthinkinglord" target="_blank">YouTube</a> | 
+        <a href="https://open.spotify.com/artist/6OjZJ949rB6WX7TWiClO6d?utm_medium=share&utm_source=linktree" target="_blank">Spotify</a> | 
+        <a href="https://music.apple.com/us/artist/overthinkinglord/1851518484" target="_blank">Apple Music</a> | 
+        <a href="https://soundcloud.com/overthinkinglord" target="_blank">SoundCloud</a> | 
+        <a href="https://genius.com/artists/Overthinkinglord" target="_blank">Genius</a>
     </div>
     <div id="subscribe" style="margin-top:2rem;">
         <input type="email" placeholder="Your email">

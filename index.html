@@ -23,6 +23,7 @@ body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow:
     text-align:center;
     position:relative;
     overflow:hidden;
+    perspective:1000px; /* для параллакса */
 }
 
 /* --- Avatar --- */
@@ -35,6 +36,7 @@ body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow:
     opacity:0;
     transform:translateY(-20px);
     animation: fadeUp 0.8s forwards 0.2s;
+    transition: transform 0.1s;
 }
 
 /* --- Particles --- */
@@ -46,6 +48,7 @@ body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow:
     animation-name: float;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+    transition: transform 0.1s;
 }
 @keyframes float{
     0%{transform:translateY(0);}
@@ -62,6 +65,7 @@ body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow:
     opacity:0;
     transform:translateY(20px);
     animation: fadeUp 1s forwards 0.5s;
+    transition: transform 0.1s;
 }
 #hero p{
     font-size:1.2rem;
@@ -69,6 +73,7 @@ body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow:
     opacity:0;
     transform:translateY(20px);
     animation: fadeUp 1s forwards 0.7s;
+    transition: transform 0.1s;
 }
 
 /* --- Social Icons --- */
@@ -84,7 +89,7 @@ body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow:
     opacity:0;
     transform:translateY(10px);
     animation: fadeUp 0.7s forwards;
-    transition: filter 0.3s, transform 0.3s;
+    transition: filter 0.3s, transform 0.1s;
 }
 #social-hero a:nth-child(1) img{animation-delay:0.9s;}
 #social-hero a:nth-child(2) img{animation-delay:1.0s;}
@@ -95,8 +100,7 @@ body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow:
 #social-hero a:nth-child(7) img{animation-delay:1.5s;}
 #social-hero a:nth-child(8) img{animation-delay:1.6s;}
 #social-hero a img:hover{
-    transform:scale(1.2);
-    filter: invert(0) sepia(1) saturate(5000%) hue-rotate(-10deg) brightness(1);
+    filter: invert(12%) sepia(90%) saturate(6000%) hue-rotate(-5deg) brightness(1);
 }
 
 /* --- Footer --- */
@@ -106,6 +110,7 @@ body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow:
     font-size:0.9rem;
     color:#ccc;
     text-align:center;
+    transition: transform 0.1s;
 }
 
 /* --- Animations --- */
@@ -140,6 +145,7 @@ body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow:
 
 <script>
 // Generate 50 particles with different sizes and speeds
+const hero = document.getElementById('hero');
 for(let i=0;i<50;i++){
     const particle=document.createElement('div');
     particle.classList.add('particle');
@@ -149,8 +155,22 @@ for(let i=0;i<50;i++){
     particle.style.left=`${Math.random()*100}%`;
     particle.style.top=`${Math.random()*100}%`;
     particle.style.animationDuration=`${Math.random()*15+10}s`;
-    document.getElementById('hero').appendChild(particle);
+    hero.appendChild(particle);
 }
+
+// Parallax effect
+hero.addEventListener('mousemove', e => {
+    const x = (e.clientX - window.innerWidth/2)/50;
+    const y = (e.clientY - window.innerHeight/2)/50;
+
+    document.getElementById('avatar').style.transform = `translate(${x}px, ${y}px)`;
+    document.querySelector('h1').style.transform = `translate(${x/1.5}px, ${y/1.5}px)`;
+    document.querySelector('p').style.transform = `translate(${x/2}px, ${y/2}px)`;
+    document.querySelectorAll('#social-hero img').forEach((img, index)=>{
+        img.style.transform = `translate(${x/(index+2)}px, ${y/(index+2)}px)`;
+    });
+    document.querySelector('#hero-footer').style.transform = `translate(${x/10}px, ${y/10}px)`;
+});
 </script>
 
 </body>

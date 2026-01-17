@@ -21,13 +21,28 @@ body {font-family:'Montserrat', sans-serif; color:#fff; background:#0b0b0b; over
     display:flex;
     flex-direction:column;
     justify-content:flex-start; /* сверху */
-    align-items:center;
+    align-items:center; /* по центру горизонтально */
     text-align:center;
     position:relative;
     padding:60px 20px 20px 20px;
+    overflow:hidden;
 }
 
-/* Hero text */
+/* Particles */
+.particle {
+    position:absolute;
+    border-radius:50%;
+    background: rgba(183,28,28,0.3);
+    pointer-events:none;
+    animation: float 10s linear infinite;
+}
+@keyframes float {
+    0% {transform: translateY(0) translateX(0);}
+    50% {transform: translateY(-100px) translateX(50px);}
+    100% {transform: translateY(0) translateX(0);}
+}
+
+/* Header text */
 #hero h1 {
     font-size:clamp(2.5rem, 8vw,4rem);
     font-weight:700;
@@ -35,16 +50,14 @@ body {font-family:'Montserrat', sans-serif; color:#fff; background:#0b0b0b; over
     opacity:0; transform:translateY(30px);
     animation: fadeUp 1s forwards 0.3s;
     text-transform: lowercase;
-    align-self:flex-start; /* слева, сверху */
 }
 
-/* Description under title */
+/* Description */
 #hero p {
     font-size:1.2rem;
     margin-bottom:2rem;
     opacity:0; transform:translateY(30px);
     animation: fadeUp 1s forwards 0.6s;
-    align-self:flex-start;
 }
 
 /* CTA buttons */
@@ -55,7 +68,6 @@ body {font-family:'Montserrat', sans-serif; color:#fff; background:#0b0b0b; over
     margin-bottom:40px;
     opacity:0; transform:translateY(30px);
     animation: fadeUp 1s forwards 0.9s;
-    align-self:flex-start;
 }
 #hero .btn {
     border-radius:50px;
@@ -84,9 +96,9 @@ body {font-family:'Montserrat', sans-serif; color:#fff; background:#0b0b0b; over
     transition: transform 0.3s, filter 0.3s, drop-shadow 0.3s;
 }
 #social-hero a img:hover {
-    transform:scale(1.2);
+    transform:scale(1.3);
     filter: brightness(1);
-    drop-shadow:0 0 8px rgba(183,28,28,0.8);
+    drop-shadow:0 0 12px rgba(183,28,28,0.9);
 }
 
 /* Footer */
@@ -138,6 +150,19 @@ socialIcons.forEach((icon, i)=>{
         icon.style.transform='translateY(0)';
     }, 500 + i*150);
 });
+
+// Create particles dynamically
+for(let i=0;i<20;i++){
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    particle.style.width = `${Math.random()*6+4}px`;
+    particle.style.height = particle.style.width;
+    particle.style.left = `${Math.random()*100}%`;
+    particle.style.top = `${Math.random()*100}%`;
+    particle.style.animationDuration = `${Math.random()*15+10}s`;
+    particle.style.background = `rgba(183,28,28,${Math.random()*0.3+0.1})`;
+    document.getElementById('hero').appendChild(particle);
+}
 </script>
 
 </body>

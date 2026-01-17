@@ -11,9 +11,9 @@
 /* Reset */
 * {margin:0; padding:0; box-sizing:border-box;}
 html {scroll-behavior: smooth;}
-body {font-family:'Montserrat', sans-serif; color:#fff; background:#0b0b0b;}
+body {font-family:'Montserrat', sans-serif; color:#fff; background:#0b0b0b; overflow-x:hidden;}
 
-/* Hero */
+/* Hero Section */
 #hero {
     height:100vh;
     width:100%;
@@ -24,34 +24,77 @@ body {font-family:'Montserrat', sans-serif; color:#fff; background:#0b0b0b;}
     align-items:center;
     text-align:center;
     position:relative;
-    overflow:hidden;
+    padding:0 2rem;
 }
 
-/* Hero text animations */
-#hero h1, #hero p, #hero .btn {opacity:0; transform: translateY(30px); animation: fadeUp 1s forwards;}
-#hero h1 {animation-delay:0.3s; font-size:clamp(3rem, 10vw,5rem);}
-#hero p {animation-delay:0.6s; font-size:1.5rem;}
-#hero .btn {margin:0.5rem; border-radius:50px; padding:0.8rem 2rem; font-weight:700; border:2px solid #c0392b; color:#c0392b; background:transparent; transition:0.3s;}
-#hero .btn:hover {background:#c0392b; color:#fff; transform:scale(1.05);}
-@keyframes fadeUp {to{opacity:1; transform:translateY(0);}}
+/* Hero text */
+#hero h1 {
+    font-size:clamp(3rem, 10vw,5rem);
+    font-weight:700;
+    margin-bottom:1rem;
+    opacity:0; transform:translateY(30px);
+    animation: fadeUp 1s forwards 0.3s;
+}
+#hero p {
+    font-size:1.5rem;
+    margin-bottom:2rem;
+    opacity:0; transform:translateY(30px);
+    animation: fadeUp 1s forwards 0.6s;
+}
 
-/* Social icons container */
+/* CTA buttons */
+#hero .btn {
+    margin:0.5rem;
+    border-radius:50px;
+    padding:0.8rem 2rem;
+    font-weight:700;
+    border:2px solid #b71c1c;
+    color:#b71c1c;
+    background:transparent;
+    cursor:pointer;
+    transition:0.3s;
+    opacity:0; transform:translateY(30px);
+}
+#hero .btn:nth-child(1) {animation: fadeUp 1s forwards 0.9s;}
+#hero .btn:nth-child(2) {animation: fadeUp 1s forwards 1.1s;}
+#hero .btn:nth-child(3) {animation: fadeUp 1s forwards 1.3s;}
+#hero .btn:hover {background:#b71c1c; color:#fff; transform:scale(1.05);}
+
+/* Social icons */
 #social-hero {
     position:absolute;
-    bottom:40px;
+    bottom:60px;
     display:flex;
     gap:20px;
+    justify-content:center;
+    opacity:0; transform:translateY(30px);
+    animation: fadeUp 1s forwards 1.6s;
 }
 #social-hero a img {
-    width:40px;
-    height:40px;
+    width:45px; height:45px;
     filter: brightness(0) invert(1);
-    transition:0.3s;
+    transition: transform 0.3s, filter 0.3s, drop-shadow 0.3s;
 }
-#social-hero a img:hover {filter: brightness(0) invert(0.8) sepia(1) hue-rotate(-10deg);}
+#social-hero a img:hover {
+    transform:scale(1.2);
+    filter: brightness(1);
+    drop-shadow:0 0 8px rgba(183,28,28,0.8);
+}
 
-/* Optional fade-in for social */
-#social-hero {opacity:0; transform:translateY(30px); animation: fadeUp 1s forwards; animation-delay:1.5s;}
+/* Footer */
+#hero-footer {
+    position:absolute;
+    bottom:10px;
+    font-size:0.9rem;
+    color:#ccc;
+    text-align:center;
+    width:100%;
+    opacity:0; transform:translateY(30px);
+    animation: fadeUp 1s forwards 1.8s;
+}
+
+/* Animations */
+@keyframes fadeUp {to{opacity:1; transform:translateY(0);}}
 </style>
 </head>
 <body>
@@ -92,6 +135,9 @@ body {font-family:'Montserrat', sans-serif; color:#fff; background:#0b0b0b;}
             <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/genius.svg" alt="Genius">
         </a>
     </div>
+
+    <!-- Footer -->
+    <div id="hero-footer">© 2026 OverthinkingLord. All rights reserved.</div>
 </section>
 
 </body>

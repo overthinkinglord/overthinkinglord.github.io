@@ -43,6 +43,7 @@ body{
     opacity:0;
     transform:translateY(-20px);
     animation:fadeUp .8s forwards .2s;
+    transition: transform 0.1s ease-out;
 }
 
 /* TEXT */
@@ -157,6 +158,7 @@ body{
 </section>
 
 <script>
+// PARTICLES
 for(let i=0;i<50;i++){
     const p=document.createElement('div');
     p.className='particle';
@@ -168,6 +170,20 @@ for(let i=0;i<50;i++){
     p.style.animationDuration=(Math.random()*15+10)+'s';
     document.getElementById('hero').appendChild(p);
 }
+
+// PARALLAX AVATAR
+const avatar = document.getElementById('avatar');
+const hero = document.getElementById('hero');
+
+hero.addEventListener('mousemove', e => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 20; // горизонтальное смещение
+    const y = (e.clientY / window.innerHeight - 0.5) * 20; // вертикальное смещение
+    avatar.style.transform = `translateY(-20px) translateX(${x}px) translateY(${y}px)`; 
+});
+
+hero.addEventListener('mouseleave', () => {
+    avatar.style.transform = `translateY(-20px) translateX(0) translateY(0)`; 
+});
 </script>
 
 </body>

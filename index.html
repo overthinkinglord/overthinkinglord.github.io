@@ -66,52 +66,18 @@ body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow-
 }
 #hero p{
     font-size:1.2rem;
-    margin-bottom:2rem;
+    margin-bottom:1.5rem; /* уменьшили расстояние для соцсетей */
     opacity:0;
     transform:translateY(20px);
     animation: fadeUp 1s forwards 0.7s;
 }
-
-/* --- Buttons with soft red blur behind --- */
-.btn-container{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:40px;
-}
-.btn{
-    position:relative;
-    border-radius:50px;
-    padding:0.8rem 2rem;
-    font-weight:700;
-    border:2px solid #b71c1c;
-    color:#b71c1c;
-    background:transparent;
-    cursor:pointer;
-    opacity:0;
-    transform:translateY(20px);
-    transition:0.3s;
-}
-.btn::before{
-    content:'';
-    position:absolute;
-    inset:0;
-    border-radius:50px;
-    background: rgba(183,28,28,0.2); /* красный blur */
-    filter: blur(8px);
-    z-index:-1;
-}
-.btn:hover{background:#b71c1c;color:#fff;}
-.btn:nth-child(1){animation: fadeUp 0.8s forwards 1.6s;}
-.btn:nth-child(2){animation: fadeUp 0.8s forwards 1.8s;}
-.btn:nth-child(3){animation: fadeUp 0.8s forwards 2s;}
 
 /* --- Social Icons --- */
 #social-hero{
     display:flex;
     gap:20px;
     justify-content:center;
-    margin-top:30px;
+    margin-top:10px; /* ближе к тексту */
 }
 #social-hero a img{
     width:45px;height:45px;
@@ -119,6 +85,7 @@ body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow-
     opacity:0;
     transform:translateY(10px);
     animation: fadeUp 0.7s forwards;
+    transition: filter 0.3s;
 }
 #social-hero a:nth-child(1) img{animation-delay:0.9s;}
 #social-hero a:nth-child(2) img{animation-delay:1.0s;}
@@ -129,8 +96,7 @@ body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow-
 #social-hero a:nth-child(7) img{animation-delay:1.5s;}
 #social-hero a:nth-child(8) img{animation-delay:1.6s;}
 #social-hero a img:hover{
-    transform:translateY(0) scale(1.2);
-    filter: brightness(1);
+    filter: invert(0) sepia(1) saturate(5000%) hue-rotate(-10deg) brightness(1);
 }
 
 /* --- Footer --- */
@@ -167,13 +133,6 @@ body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow-
         <a href="https://www.beatstars.com/overthinkinglord" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/beatstars.svg" alt="Beatstars"></a>
         <a href="https://www.tiktok.com/@overthinkinglord7" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok"></a>
         <a href="https://genius.com/artists/Overthinkinglord" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/genius.svg" alt="Genius"></a>
-    </div>
-
-    <!-- Buttons -->
-    <div class="btn-container">
-        <a href="#" class="btn">Listen Now</a>
-        <a href="#" class="btn">Add to Playlist</a>
-        <a href="#" class="btn">Buy / Download</a>
     </div>
 
     <div id="hero-footer">© 2026 OverthinkingLord. All rights reserved.</div>

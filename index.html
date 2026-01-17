@@ -8,8 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0; padding:0; box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow-x:hidden;}
+html, body{height:100%; scroll-behavior:smooth;}
+body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow:hidden;}
 
 /* --- Hero --- */
 #hero{
@@ -18,11 +18,10 @@ body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow-
     background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.85)), url('back.png') center/cover no-repeat;
     display:flex;
     flex-direction:column;
-    justify-content:flex-start;
+    justify-content:center;
     align-items:center;
     text-align:center;
     position:relative;
-    padding:100px 20px 20px 20px;
     overflow:hidden;
 }
 
@@ -66,7 +65,7 @@ body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow-
 }
 #hero p{
     font-size:1.2rem;
-    margin-bottom:1.5rem; /* уменьшили расстояние для соцсетей */
+    margin-bottom:1.5rem;
     opacity:0;
     transform:translateY(20px);
     animation: fadeUp 1s forwards 0.7s;
@@ -77,7 +76,7 @@ body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow-
     display:flex;
     gap:20px;
     justify-content:center;
-    margin-top:10px; /* ближе к тексту */
+    margin-top:20px;
 }
 #social-hero a img{
     width:45px;height:45px;
@@ -85,7 +84,7 @@ body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow-
     opacity:0;
     transform:translateY(10px);
     animation: fadeUp 0.7s forwards;
-    transition: filter 0.3s;
+    transition: filter 0.3s, transform 0.3s;
 }
 #social-hero a:nth-child(1) img{animation-delay:0.9s;}
 #social-hero a:nth-child(2) img{animation-delay:1.0s;}
@@ -96,6 +95,7 @@ body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow-
 #social-hero a:nth-child(7) img{animation-delay:1.5s;}
 #social-hero a:nth-child(8) img{animation-delay:1.6s;}
 #social-hero a img:hover{
+    transform:scale(1.2);
     filter: invert(0) sepia(1) saturate(5000%) hue-rotate(-10deg) brightness(1);
 }
 

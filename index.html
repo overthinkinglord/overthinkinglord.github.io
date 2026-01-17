@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="google-site-verification" content="-9Fos69d0rBaKPJVEDCF2Gtl52-xeKKoHckJVcbCE_8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>overthinkinglord – Dubstep, Electro-Rock & Horror-Rock 2026</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -40,7 +40,7 @@ body{
     margin-bottom:20px;
     opacity:0;
     animation:fadeUp 0.8s forwards 0.2s;
-    perspective: 1000px; /* добавляем глубину для 3D */
+    perspective: 1000px; /* глубина для 3D */
 }
 
 /* AVATAR */
@@ -49,8 +49,9 @@ body{
     height:100%;
     object-fit:cover;
     border-radius:12px;
-    transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
-    will-change: transform, box-shadow;
+    transform-style: preserve-3d;
+    animation:avatar3D 6s ease-in-out infinite alternate;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
 /* TEXT */
@@ -129,10 +130,35 @@ body{
     to{opacity:1;}
 }
 
+/* Анимация частиц */
 @keyframes float{
     0%{transform:translateY(0);}
     50%{transform:translateY(-100px);}
     100%{transform:translateY(0);}
+}
+
+/* Объемная 3D анимация аватара */
+@keyframes avatar3D{
+    0%{
+        transform: rotateX(2deg) rotateY(-3deg) translateY(0);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    25%{
+        transform: rotateX(-2deg) rotateY(4deg) translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    }
+    50%{
+        transform: rotateX(3deg) rotateY(2deg) translateY(3px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+    }
+    75%{
+        transform: rotateX(-3deg) rotateY(-4deg) translateY(-2px);
+        box-shadow: 0 14px 32px rgba(0,0,0,0.42);
+    }
+    100%{
+        transform: rotateX(2deg) rotateY(-3deg) translateY(0);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
 }
 </style>
 </head>
@@ -177,29 +203,6 @@ for(let i=0;i<50;i++){
     p.style.animationDuration=(Math.random()*15+10)+'s';
     document.getElementById('hero').appendChild(p);
 }
-
-// 3D PARALLAX AVATAR
-const avatar = document.getElementById('avatar');
-const wrapper = document.getElementById('avatar-wrapper');
-
-wrapper.addEventListener('mousemove', e => {
-    const rect = wrapper.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width/2;
-    const y = e.clientY - rect.top - rect.height/2;
-
-    const rotateX = (y / rect.height) * 15; // вращение по X
-    const rotateY = -(x / rect.width) * 15; // вращение по Y
-    const translateX = x * 0.05; // смещение по X
-    const translateY = y * 0.05; // смещение по Y
-
-    avatar.style.transform = `translate(${translateX}px, ${translateY}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    avatar.style.boxShadow = `${-rotateY*0.8}px ${rotateX*0.8}px 20px rgba(0,0,0,0.4)`;
-});
-
-wrapper.addEventListener('mouseleave', () => {
-    avatar.style.transform = `translate(0px,0px) rotateX(0deg) rotateY(0deg)`;
-    avatar.style.boxShadow = `0 0 0 rgba(0,0,0,0)`;
-});
 </script>
 
 </body>

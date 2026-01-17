@@ -1,0 +1,84 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html, body{
+    height:100%;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Montserrat', sans-serif;
+    background:#0b0b0b;
+    color:#fff;
+    overflow:hidden;
+}
+
+/* ================= HERO ================= */
+
+#hero{
+    height:100vh;
+    width:100%;
+    background:
+        linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.85)),
+        url('back.png') center/cover no-repeat;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+/* ================= AVATAR ================= */
+
+#avatar{
+    width:300px;
+    height:300px;
+    object-fit:cover;
+    border-radius:12px;
+    margin-bottom:20px;
+    opacity:0;
+    transform:translateY(-20px);
+    animation: fadeUp 0.8s forwards 0.2s;
+}
+
+/* ================= TEXT ================= */
+
+#hero h1{
+    font-size:clamp(2.5rem,8vw,4rem);
+    font-weight:700;
+    text-transform:lowercase;
+    margin-bottom:0.5rem;
+    opacity:0;
+    transform:translateY(20px);
+    animation: fadeUp 1s forwards 0.5s;
+}
+
+#hero p{
+    font-size:1.2rem;
+    margin-bottom:1.5rem;
+    opacity:0;
+    transform:translateY(20px);
+    animation: fadeUp 1s forwards 0.7s;
+}
+
+/* ================= SOCIAL ICONS ================= */
+
+#social-hero{
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    margin-top:20px;
+}
+
+#social-hero a img{
+    width:45px;
+    height:45px;
+    filter: brightness(0) invert(1);
+    opacity:0;
+    transform:translateY(10px);
+    animation: fadeUp 0.7s for

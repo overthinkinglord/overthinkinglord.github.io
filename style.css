@@ -62,10 +62,11 @@ body{
     margin-top:20px;
 }
 
+/* Иконки исходно белые */
 #social-hero a img{
     width:45px;
     height:45px;
-    filter:brightness(0) invert(1);
+    filter: invert(1); /* исходно белый */
     opacity:0;
     transform:translateY(10px);
     animation:fadeUp 0.7s forwards, idleGlow 6s infinite;
@@ -75,7 +76,7 @@ body{
         box-shadow 0.3s ease;
 }
 
-/* delays */
+/* задержки анимации */
 #social-hero a:nth-child(1) img{animation-delay:0.9s;}
 #social-hero a:nth-child(2) img{animation-delay:1.0s;}
 #social-hero a:nth-child(3) img{animation-delay:1.1s;}
@@ -85,15 +86,10 @@ body{
 #social-hero a:nth-child(7) img{animation-delay:1.5s;}
 #social-hero a:nth-child(8) img{animation-delay:1.6s;}
 
-/* --- Hover BLOOD EFFECT --- */
+/* --- Hover BLOOD EFFECT с видимыми иконками --- */
 #social-hero a img:hover{
     transform:scale(1.25) rotate(-3deg);
-    filter:
-        invert(18%)
-        sepia(90%)
-        saturate(6000%)
-        hue-rotate(350deg)
-        brightness(0.9);
+    filter: invert(0.18) sepia(0.9) saturate(60) hue-rotate(-10deg) brightness(1);
     animation:bloodPulse 1.2s infinite;
 }
 

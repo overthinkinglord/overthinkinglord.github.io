@@ -79,9 +79,8 @@ body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow:
     margin-top:20px;
 }
 #social-hero a img{
-    width:45px;
-    height:45px;
-    filter: brightness(1); /* белые по умолчанию */
+    width:45px;height:45px;
+    filter: brightness(0) invert(1);
     opacity:0;
     transform:translateY(10px);
     animation: fadeUp 0.7s forwards;
@@ -97,7 +96,7 @@ body{font-family:'Montserrat',sans-serif;color:#fff;background:#0b0b0b;overflow:
 #social-hero a:nth-child(8) img{animation-delay:1.6s;}
 #social-hero a img:hover{
     transform:scale(1.2);
-    filter: brightness(0.6) sepia(1) saturate(800%) hue-rotate(-10deg); /* мягко-темно-красный */
+    filter: invert(0) sepia(1) saturate(5000%) hue-rotate(-10deg) brightness(1);
 }
 
 /* --- Footer --- */

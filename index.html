@@ -391,14 +391,14 @@ body{
     <p>Dubstep · Experimental Rock · Electro-Rock · Atmospheric & Horror-Rock</p>
 
     <div id="social-hero">
-        <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/spotify.svg" alt="Spotify"></a>
-        <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/applemusic.svg" alt="Apple Music"></a>
-        <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/soundcloud.svg" alt="SoundCloud"></a>
-        <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube"></a>
-        <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram"></a>
-        <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/beatstars.svg" alt="Beatstars"></a>
-        <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok"></a>
-        <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/genius.svg" alt="Genius"></a>
+        <a href="https://open.spotify.com/artist/6OjZJ949rB6WX7TWiClO6d?utm_medium=share&utm_source=linktree"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/spotify.svg" alt="Spotify"></a>
+        <a href="https://music.apple.com/us/artist/overthinkinglord/1851518484"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/applemusic.svg" alt="Apple Music"></a>
+        <a href="https://soundcloud.com/overthinkinglord"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/soundcloud.svg" alt="SoundCloud"></a>
+        <a href="https://www.youtube.com/@overthinkinglord"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube"></a>
+        <a href="https://www.instagram.com/overthinkingprod"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram"></a>
+        <a href="https://www.beatstars.com/overthinkinglord"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/beatstars.svg" alt="Beatstars"></a>
+        <a href="https://www.tiktok.com/@overthinkinglord7"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok"></a>
+        <a href="https://genius.com/artists/Overthinkinglord"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/genius.svg" alt="Genius"></a>
     </div>
 
     <div id="hero-footer">© 2026 overthinkinglord. All rights reserved.</div>
@@ -448,21 +448,34 @@ body{
 <section id="discography">
   <h2>Discography</h2>
   <div class="albums-container">
-    <div class="album">
-      <img src="./albums/phosphorus.jpg" alt="Phosphorus Album Cover">
+
+    <div class="album" data-audio="./audio/phosphorus.mp3">
+      <div class="album-cover">
+        <img src="./albums/phosphorus.jpg" alt="Phosphorus Album Cover">
+        <div class="play-overlay">▶</div>
+      </div>
       <p class="album-title">Phosphorus</p>
       <p class="album-year">2025</p>
     </div>
-    <div class="album">
-      <img src="./albums/lithium.jpg" alt="Lithium Album Cover">
+
+    <div class="album" data-audio="./audio/lithium.mp3">
+      <div class="album-cover">
+        <img src="./albums/lithium.jpg" alt="Lithium Album Cover">
+        <div class="play-overlay">▶</div>
+      </div>
       <p class="album-title">Lithium</p>
       <p class="album-year">2026</p>
     </div>
-    <div class="album">
-      <img src="./albums/cementary.jpg" alt="Cementary of Darkness 2 Album Cover">
+
+    <div class="album" data-audio="./audio/cementary.mp3">
+      <div class="album-cover">
+        <img src="./albums/cementary.jpg" alt="Cementary of Darkness 2 Album Cover">
+        <div class="play-overlay">▶</div>
+      </div>
       <p class="album-title">Cementary of Darkness 2</p>
       <p class="album-year">2026</p>
     </div>
+
   </div>
 </section>
 
@@ -503,10 +516,22 @@ body{
     width:100%;
     border-radius:12px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    filter: grayscale(100%) brightness(0.4);
+    transition: filter 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.album:hover img{
+/* Наведение — цвет */
+.album:hover img {
+    filter: none;
+}
+
+/* ИГРАЕТ — цвет всегда */
+.album.playing img {
+    filter: none;
+}
+
+/* hover масштаб */
+.album:hover img {
     transform: scale(1.05);
     box-shadow: 0 15px 35px rgba(183,28,28,0.6);
 }
@@ -521,6 +546,80 @@ body{
     font-size:clamp(0.8rem,2vw,1rem);
     color:rgba(255,255,255,0.6);
 }
+
+.album-cover {
+    position: relative;
+    cursor: pointer;
+}
+
+/* ОБЩИЕ СВОЙСТВА overlay */
+.play-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 12px;
+    background: rgba(0,0,0,0.45);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    font-size: 0; /* убираем текст */
+    pointer-events: none;
+    opacity: 0; /* Скрываем по умолчанию */
+}
+
+/* Появление overlay при hover */
+.album-cover:hover .play-overlay {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ТОНКИЙ PLAY (только при hover, если альбом НЕ играет) */
+.album:not(.playing) .play-overlay::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 18px solid white; /* длина плей */
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-radius: 1px;
+}
+
+/* ТОНКАЯ ПАУЗА — всегда видна при игре */
+.album.playing .play-overlay {
+    opacity: 1; /* всегда видно */
+}
+
+.album.playing .play-overlay::before,
+.album.playing .play-overlay::after {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 24px;
+    background: white;
+    border-radius: 2px;
+    margin: 0 3px;
+}
+
+/* Скрываем плей при игре */
+.album.playing .play-overlay::before {
+    border: none;
+}
+
+
+/* Когда что-то играет — все альбомы серые */
+.albums-container.playing .album {
+    filter: grayscale(100%) brightness(0.4);
+    transition: filter 0.3s ease;
+}
+
+/* Активный альбом — нормальный */
+.albums-container.playing .album.playing {
+    filter: none;
+}
+
+
 
 /* MEDIA QUERIES */
 @media(max-width:900px){
@@ -599,6 +698,62 @@ function revealOnScroll() {
 
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
+
+(() => {
+    const albums = document.querySelectorAll('.album');
+
+    let currentAudio = null;
+    let currentAlbum = null;
+
+    albums.forEach(album => {
+        const cover = album.querySelector('.album-cover');
+        const overlay = album.querySelector('.play-overlay');
+        const audioSrc = album.dataset.audio;
+
+        const audio = new Audio(audioSrc);
+
+        cover.addEventListener('click', () => {
+
+            // Клик по текущему
+            if (currentAlbum === album) {
+                if (audio.paused) {
+                    audio.play();
+                    album.classList.add('playing');
+                    overlay.textContent = '❚❚';
+                } else {
+                    audio.pause();
+                    album.classList.remove('playing');
+                    overlay.textContent = '▶';
+                }
+                return;
+            }
+
+            // Остановить предыдущий
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                currentAlbum.classList.remove('playing');
+                currentAlbum.querySelector('.play-overlay').textContent = '▶';
+            }
+
+            // Запустить новый
+            audio.play();
+            album.classList.add('playing');
+            overlay.textContent = '❚❚';
+
+            currentAudio = audio;
+            currentAlbum = album;
+        });
+
+        // Конец трека
+        audio.addEventListener('ended', () => {
+            album.classList.remove('playing');
+            overlay.textContent = '▶';
+            currentAudio = null;
+            currentAlbum = null;
+        });
+    });
+})();
 </script>
 
 </body>

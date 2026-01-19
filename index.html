@@ -299,7 +299,7 @@ body{
 
 /* BIOGRAPHY SECTION */
 #biography{
-    padding:80px 20px;
+    padding:80px 10px;
     background:#0b0b0b;
     color:#fff;
 }
@@ -443,6 +443,131 @@ body{
     </div>
   </div>
 </section>
+
+<!-- DISCOGRAPHY -->
+<section id="discography">
+  <h2>Discography</h2>
+  <div class="albums-container">
+    <div class="album">
+      <img src="./albums/phosphorus.jpg" alt="Phosphorus Album Cover">
+      <p class="album-title">Phosphorus</p>
+      <p class="album-year">2025</p>
+    </div>
+    <div class="album">
+      <img src="./albums/lithium.jpg" alt="Lithium Album Cover">
+      <p class="album-title">Lithium</p>
+      <p class="album-year">2026</p>
+    </div>
+    <div class="album">
+      <img src="./albums/cementary.jpg" alt="Cementary of Darkness 2 Album Cover">
+      <p class="album-title">Cementary of Darkness 2</p>
+      <p class="album-year">2026</p>
+    </div>
+  </div>
+</section>
+
+<style>
+
+/* DISCOGRAPHY SECTION */
+#discography{
+    padding:10px 20px 100px 20px;
+    background:#0b0b0b;
+    color:#fff;
+    text-align:center;
+}
+
+#discography h2{
+    font-size:clamp(1.8rem,4vw,2.5rem);
+    margin-bottom:40px;
+    opacity:0;
+    transform:translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.albums-container{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:40px;
+}
+
+.album{
+    width:clamp(180px,20vw,220px);
+    opacity:0;
+    transform:translateY(30px);
+    transition: all 0.8s ease-out;
+    text-align:center;
+}
+
+.album img{
+    width:100%;
+    border-radius:12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.album:hover img{
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(183,28,28,0.6);
+}
+
+.album-title{
+    margin-top:12px;
+    font-weight:700;
+    font-size:clamp(1rem,2.5vw,1.2rem);
+}
+
+.album-year{
+    font-size:clamp(0.8rem,2vw,1rem);
+    color:rgba(255,255,255,0.6);
+}
+
+/* MEDIA QUERIES */
+@media(max-width:900px){
+    .albums-container{
+        gap:25px;
+    }
+    .album{
+        width:45%;
+    }
+}
+
+@media(max-width:600px){
+    .album{
+        width:80%;
+    }
+}
+</style>
+
+<script>
+// REVEAL ALBUMS ON SCROLL
+function revealAlbums() {
+    const albums = document.querySelectorAll('.album');
+    const windowHeight = window.innerHeight;
+    
+    albums.forEach((album, index) => {
+        const elementTop = album.getBoundingClientRect().top;
+        if(elementTop < windowHeight - 100){
+            setTimeout(() => {
+                album.style.opacity = 1;
+                album.style.transform = 'translateY(0)';
+            }, index * 200); // staggered animation
+        }
+    });
+
+    // Reveal discography title
+    const title = document.querySelector('#discography h2');
+    const titleTop = title.getBoundingClientRect().top;
+    if(titleTop < windowHeight - 100){
+        title.style.opacity = 1;
+        title.style.transform = 'translateY(0)';
+    }
+}
+
+window.addEventListener('scroll', revealAlbums);
+window.addEventListener('load', revealAlbums);
+</script>
+
 
 <!-- PARTICLES & SCROLL -->
 <script>

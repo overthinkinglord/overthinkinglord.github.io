@@ -9,7 +9,6 @@ body{
     overflow-x:hidden;
 }
 
-/* HERO SECTION */
 #hero{
     min-height:100vh;
     background:
@@ -31,11 +30,10 @@ body{
 @media(max-width:900px){
     #hero {
         background-attachment: scroll;
-        background-size: cover; /* чтобы фон корректно растягивался */
+        background-size: cover;
     }
 }
 
-/* AVATAR WRAPPER */
 #avatar-wrapper{
     width:clamp(180px,30vw,300px);
     height:clamp(180px,30vw,300px);
@@ -45,7 +43,6 @@ body{
     perspective: 1000px;
 }
 
-/* AVATAR */
 #avatar{
     width:100%;
     height:100%;
@@ -56,7 +53,6 @@ body{
     box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
-/* TEXT */
 #hero h1{
     font-size:clamp(2rem,8vw,4rem);
     text-transform:lowercase;
@@ -72,7 +68,6 @@ body{
     animation:fadeUp 1s forwards .7s;
 }
 
-/* SOCIAL */
 #social-hero{
     display:flex;
     gap:15px;
@@ -109,8 +104,6 @@ body{
     border-radius:50%;
 }
 
-
-/* FOOTER */
 #hero-footer{
     font-size:clamp(.7rem,.9vw,.9rem);
     color:#ccc;
@@ -119,7 +112,6 @@ body{
     bottom:10px;
 }
 
-/* PARTICLES */
 .particle{
     position:absolute;
     border-radius:50%;
@@ -128,7 +120,6 @@ body{
     animation:float linear infinite;
 }
 
-/* ANIMATIONS */
 @keyframes fadeUp{
     from{opacity:0; transform:translateY(20px);}
     to{opacity:1; transform:translateY(0);}
@@ -140,7 +131,6 @@ body{
     100%{transform:translateY(0);}
 }
 
-/* 3D AVATAR ANIMATION */
 @keyframes avatar3D{
     0%{transform: rotateX(1deg) rotateY(-2deg) translateY(0); box-shadow:0 10px 30px rgba(0,0,0,0.4);}
     25%{transform: rotateX(-1deg) rotateY(2deg) translateY(-3px); box-shadow:0 12px 30px rgba(0,0,0,0.45);}
@@ -149,7 +139,6 @@ body{
     100%{transform: rotateX(1deg) rotateY(-2deg) translateY(0); box-shadow:0 10px 30px rgba(0,0,0,0.4);}
 }
 
-/* BIOGRAPHY SECTION */
 #biography{
     padding:80px 10px;
     background:#0b0b0b;
@@ -178,7 +167,6 @@ body{
     animation: bio3D 6s ease-in-out infinite alternate;
 }
 
-/* Анимация вращения/наклона */
 @keyframes bio3D {
     0%   { transform: rotateX(1deg) rotateY(-2deg) translateY(0); }
     25%  { transform: rotateX(-1deg) rotateY(2deg) translateY(-3px); }
@@ -198,7 +186,6 @@ body{
     margin-bottom:15px;
 }
 
-/* MEDIA QUERIES */
 @media(max-width:900px){
     .bio-container{
         flex-direction:column;
@@ -228,18 +215,17 @@ body{
         gap:12px;
     }
 }
-/* Ссылки в биографии */
+
 .bio-text a {
     color: rgba(183,28,28,0.6);
-    text-decoration: none; /* убирает подчеркивание, если нужно */
+    text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .bio-text a:hover {
-    color: rgba(183,28,28,1); /* ярче при наведении */
+    color: rgba(183,28,28,1);
 }
 
-/* DISCOGRAPHY SECTION */
 #discography{
     padding:10px 20px 100px 20px;
     background:#0b0b0b;
@@ -278,17 +264,14 @@ body{
     transition: filter 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Наведение — цвет */
 .album:hover img {
     filter: none;
 }
 
-/* ИГРАЕТ — цвет всегда */
 .album.playing img {
     filter: none;
 }
 
-/* hover масштаб */
 .album:hover img {
     transform: scale(1.05);
     box-shadow: 0 15px 35px rgba(183,28,28,0.6);
@@ -310,7 +293,6 @@ body{
     cursor: pointer;
 }
 
-/* ОБЩИЕ СВОЙСТВА overlay */
 .play-overlay {
     position: absolute;
     inset: 0;
@@ -321,32 +303,29 @@ body{
     border-radius: 12px;
     background: rgba(0,0,0,0.45);
     transition: transform 0.3s ease, opacity 0.3s ease;
-    font-size: 0; /* убираем текст */
+    font-size: 0;
     pointer-events: none;
-    opacity: 0; /* Скрываем по умолчанию */
+    opacity: 0;
 }
 
-/* Появление overlay при hover */
 .album-cover:hover .play-overlay {
     opacity: 1;
     transform: scale(1);
 }
 
-/* ТОНКИЙ PLAY (только при hover, если альбом НЕ играет) */
 .album:not(.playing) .play-overlay::before {
     content: '';
     display: block;
     width: 0;
     height: 0;
-    border-left: 18px solid white; /* длина плей */
+    border-left: 18px solid white;
     border-top: 12px solid transparent;
     border-bottom: 12px solid transparent;
     border-radius: 1px;
 }
 
-/* ТОНКАЯ ПАУЗА — всегда видна при игре */
 .album.playing .play-overlay {
-    opacity: 1; /* всегда видно */
+    opacity: 1;
 }
 
 .album.playing .play-overlay::before,
@@ -360,26 +339,19 @@ body{
     margin: 0 3px;
 }
 
-/* Скрываем плей при игре */
 .album.playing .play-overlay::before {
     border: none;
 }
 
-
-/* Когда что-то играет — все альбомы серые */
 .albums-container.playing .album {
     filter: grayscale(100%) brightness(0.4);
     transition: filter 0.3s ease;
 }
 
-/* Активный альбом — нормальный */
 .albums-container.playing .album.playing {
     filter: none;
 }
 
-
-
-/* MEDIA QUERIES */
 @media(max-width:900px){
     .albums-container{
         gap:25px;

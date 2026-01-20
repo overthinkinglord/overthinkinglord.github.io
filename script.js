@@ -8,11 +8,10 @@ function revealAlbums() {
             setTimeout(() => {
                 album.style.opacity = 1;
                 album.style.transform = 'translateY(0)';
-            }, index * 200); // staggered animation
+            }, index * 200);
         }
     });
 
-    // Reveal discography title
     const title = document.querySelector('#discography h2');
     const titleTop = title.getBoundingClientRect().top;
     if(titleTop < windowHeight - 100){
@@ -24,7 +23,6 @@ function revealAlbums() {
 window.addEventListener('scroll', revealAlbums);
 window.addEventListener('load', revealAlbums);
 
-// PARTICLES IN HERO
 for(let i=0;i<50;i++){
     const p=document.createElement('div');
     p.className='particle';
@@ -37,7 +35,6 @@ for(let i=0;i<50;i++){
     document.getElementById('hero').appendChild(p);
 }
 
-// BIO APPEAR ON SCROLL
 function revealOnScroll() {
     const bio = document.querySelector('.bio-container');
     const windowHeight = window.innerHeight;
@@ -68,7 +65,6 @@ window.addEventListener('load', revealOnScroll);
 
         cover.addEventListener('click', () => {
 
-            // Клик по текущему
             if (currentAlbum === album) {
                 if (audio.paused) {
                     audio.play();
@@ -82,7 +78,6 @@ window.addEventListener('load', revealOnScroll);
                 return;
             }
 
-            // Остановить предыдущий
             if (currentAudio) {
                 currentAudio.pause();
                 currentAudio.currentTime = 0;
@@ -90,7 +85,6 @@ window.addEventListener('load', revealOnScroll);
                 currentAlbum.querySelector('.play-overlay').textContent = '▶';
             }
 
-            // Запустить новый
             audio.play();
             album.classList.add('playing');
             overlay.textContent = '❚❚';
@@ -99,7 +93,6 @@ window.addEventListener('load', revealOnScroll);
             currentAlbum = album;
         });
 
-        // Конец трека
         audio.addEventListener('ended', () => {
             album.classList.remove('playing');
             overlay.textContent = '▶';

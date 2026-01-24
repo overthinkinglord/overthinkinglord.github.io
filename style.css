@@ -1,45 +1,4 @@
-
-
 *{margin:0;padding:0;box-sizing:border-box;}
-
-/* Self-hosted fonts: place these files in ./fonts/
-     - Montserrat-400.woff2
-     - Montserrat-700.woff2
-     - Merriweather-400.woff2
-     - Merriweather-700.woff2
-     After adding files, browsers will preload them via <link rel="preload"> in index.html */
-
-@font-face{
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url('/fonts/Montserrat-400.woff2') format('woff2');
-}
-
-@font-face{
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url('/fonts/Montserrat-700.woff2') format('woff2');
-}
-
-@font-face{
-    font-family: 'Merriweather';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url('/fonts/Merriweather-400.woff2') format('woff2');
-}
-
-@font-face{
-    font-family: 'Merriweather';
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url('/fonts/Merriweather-700.woff2') format('woff2');
-}
 html,body{height:100%;scroll-behavior:smooth;}
 body{
     font-family:'Montserrat',sans-serif;

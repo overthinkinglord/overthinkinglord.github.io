@@ -15,7 +15,8 @@
 
 <title>overthinkinglord – Dubstep, Electro-Rock & Horror-Rock 2026</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="preload" href="style.css" as="style" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="style.css"></noscript>
 <link rel="canonical" href="https://overthinkinglord.com/">
 
 <script type="application/ld+json">
@@ -143,8 +144,12 @@
 </script>
 
 <link rel="icon" href="/favicon.ico">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/Montserrat-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/Montserrat-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/Merriweather-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/Merriweather-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/img/avatar.jpeg" as="image">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 
 </head>
 <body>
@@ -152,7 +157,7 @@
 <section id="hero">
 
     <div id="avatar-wrapper">
-        <img id="avatar" src="./img/avatar.jpeg" alt="OverthinkingLord Avatar" loading="lazy">
+      <img id="avatar" src="/img/avatar.jpeg" alt="OverthinkingLord Avatar" width="736" height="736" fetchpriority="high" decoding="async">
     </div>
 
     <h1>overthinkinglord</h1>
@@ -233,6 +238,11 @@
 
 </section>
 
-<script src="script.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js').catch(()=>{});
+}
+</script>
+<script src="script.js" defer></script>
 </body>
 </html>
